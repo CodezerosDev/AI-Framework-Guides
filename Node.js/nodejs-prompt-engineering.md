@@ -9,11 +9,13 @@ Prompt engineering means crafting clear instructions to AI tools so they generat
 ### 1. Specify the Framework or Library
 
 **Basic prompt:**
+
 ```
 Create a server
 ```
 
 **Improved prompt:**
+
 ```
 Generate an Express.js server that listens on port 3000,
 handles JSON requests, and includes error handling middleware.
@@ -22,11 +24,13 @@ handles JSON requests, and includes error handling middleware.
 ### 2. Define the Feature Clearly
 
 **Basic prompt:**
+
 ```
 Create an API
 ```
 
 **Improved prompt:**
+
 ```
 Create a REST API endpoint GET /users that returns a JSON list
 of users from a MongoDB collection using Mongoose.
@@ -36,6 +40,7 @@ Include proper error handling and response status codes.
 ### 3. Include Data Source Details
 
 **Improved prompt:**
+
 ```
 Generate a Node.js service using Sequelize ORM connected to
 a PostgreSQL database. Implement methods to create, read,
@@ -45,6 +50,7 @@ update, and delete products with validation.
 ### 4. Mention Middleware and Tools
 
 **Improved prompt:**
+
 ```
 Add authentication middleware using Passport.js JWT strategy
 to protect route POST /orders. Include token validation and
@@ -54,6 +60,7 @@ error responses for unauthorized access.
 ### 5. Provide File Structure Expectations
 
 **Improved prompt:**
+
 ```
 Structure the project with:
 - server.js (entry point)
@@ -114,11 +121,13 @@ Create Jest tests for the user controller:
 ```
 
 **Basic prompt:**
+
 ```
 Write tests for user service
 ```
 
 **Improved prompt:**
+
 ```
 Write Mocha + Chai test cases for a Node.js `userService.js` file that:
 - Includes methods: `createUser`, `getUserById`, `updateUser`, and `deleteUser`
@@ -129,17 +138,25 @@ Write Mocha + Chai test cases for a Node.js `userService.js` file that:
 ```
 
 **Basic prompt:**
+
 ```
 Add edge case tests
 ```
 
 **Improved prompt:**
+
 ```
 Write test cases for `userService` covering edge cases:
 - Creating a user with an already registered email (should throw a duplicate key error)
 - Getting a user with an invalid or non-existent ID (should return null or throw)
 - Updating a user with missing required fields (should trigger validation error)
 - Deleting a user that doesn't exist (should handle gracefully without crashing)
+```
+
+**Provide reference testcase:**
+
+```
+If possible, start by writing one complete and properly structured test case that includes all necessary setup, mocking, and assertions. This test case should serve as a reference for others. Once it's written, use a prompt that explicitly asks the AI to follow the same structure and conventions as the example test case when generating additional test cases for other methods. This ensures consistency and helps maintain clean, maintainable test code.
 ```
 
 ## Prompt Refinement Tips
@@ -152,12 +169,14 @@ Write test cases for `userService` covering edge cases:
 ## Do’s and Don’ts
 
 ### ✅ Do:
+
 - Mention the exact library, version, and patterns.
 - Specify routes, methods, and expected inputs/outputs.
 - Ask for error handling and edge cases.
 - Provide project structure in prompts.
 
 ### ❌ Don’t:
+
 - Use vague terms like “make an API” without details.
 - Combine too many unrelated tasks in one prompt.
 - Omit database or framework details.
