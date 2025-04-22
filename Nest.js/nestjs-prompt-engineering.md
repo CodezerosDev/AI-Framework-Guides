@@ -110,6 +110,37 @@ Generate a Nest.js HTTP exception filter that:
 - Applies to all routes globally
 ```
 
+### Define the Testing Framework and Scope
+
+**Basic prompt:**
+```
+Write tests for user service
+```
+
+**Improved prompt:**
+```
+Write Jest test cases for a Nest.js `UserService` that:
+- Includes methods: `createUser`, `getUserById`, `updateUser`, and `deleteUser`
+- Mocks the `UserRepository` using `@nestjs/testing`
+- Validates input using DTOs and class-validator
+- Throws appropriate exceptions like `NotFoundException` and `ConflictException`
+- Covers both success and failure scenarios
+```
+
+**Basic prompt:**
+```
+Add edge case tests
+```
+
+**Improved prompt:**
+```
+Add edge case test scenarios for `UserService` including:
+- Creating a user that already exists (should throw `ConflictException`)
+- Fetching a user with a non-existent ID (should throw `NotFoundException`)
+- Updating a user with invalid data (should fail validation)
+- Deleting a user that doesn't exist
+```
+
 ## Prompt Refinement Best Practices
 
 - **Ask for type safety**: “Add TypeScript types to DTOs and method signatures”

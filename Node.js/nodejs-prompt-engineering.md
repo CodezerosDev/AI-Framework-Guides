@@ -113,6 +113,35 @@ Create Jest tests for the user controller:
 - Test error cases for invalid database responses
 ```
 
+**Basic prompt:**
+```
+Write tests for user service
+```
+
+**Improved prompt:**
+```
+Write Mocha + Chai test cases for a Node.js `userService.js` file that:
+- Includes methods: `createUser`, `getUserById`, `updateUser`, and `deleteUser`
+- Uses a `userModel` that interacts with MongoDB via Mongoose
+- Mocks database operations using `sinon` or `proxyquire`
+- Tests both successful responses and thrown errors
+- Ensures proper validation logic is followed for each method
+```
+
+**Basic prompt:**
+```
+Add edge case tests
+```
+
+**Improved prompt:**
+```
+Write test cases for `userService` covering edge cases:
+- Creating a user with an already registered email (should throw a duplicate key error)
+- Getting a user with an invalid or non-existent ID (should return null or throw)
+- Updating a user with missing required fields (should trigger validation error)
+- Deleting a user that doesn't exist (should handle gracefully without crashing)
+```
+
 ## Prompt Refinement Tips
 
 - **Break down complex tasks**: Ask for one piece at a time.
