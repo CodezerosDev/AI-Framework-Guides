@@ -155,16 +155,11 @@ Write test cases for `userService` covering edge cases:
 
 **Provide reference testcase:**
 
-If possible, start by writing **one complete and properly structured test case**  
-that includes all necessary setup, mocking, and assertions.  
-
-This test case should serve as a reference for others.  
-
-Once it's written, use a prompt that explicitly asks the AI to  
-**follow the same structure and conventions** as the example test case  
-when generating additional test cases for other methods.  
-
-This ensures consistency and helps maintain clean, maintainable test code.
+- Start by writing **one complete and well-structured test case** for a specific method.
+- Include setup logic, mocking of dependencies, success and failure cases, and clear assertions.
+- Use that test case as a **reference standard** for the structure and conventions.
+- When prompting AI, **explicitly ask it to follow the structure** of the initial test case.
+- This promotes consistency and ensures clean, maintainable test coverage.
 
 ## Prompt Refinement Tips
 
