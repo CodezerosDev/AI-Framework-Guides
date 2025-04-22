@@ -153,7 +153,6 @@ Add edge case test scenarios for `UserService` including:
 
 **Provide reference testcase:**
 
-```
 If possible, start by writing **one complete and properly structured test case**  
 that includes all necessary setup, mocking, and assertions.  
 
@@ -164,7 +163,6 @@ Once it's written, use a prompt that explicitly asks the AI to
 when generating additional test cases for other methods.  
 
 This ensures consistency and helps maintain clean, maintainable test code.
-```
 
 ## Prompt Refinement Best Practices
 
