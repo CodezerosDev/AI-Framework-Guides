@@ -9,11 +9,13 @@ Prompt engineering means crafting clear instructions to AI tools so they generat
 ### 1. Specify the Framework or Library
 
 **Basic prompt:**
+
 ```
 Create a server
 ```
 
 **Improved prompt:**
+
 ```
 Generate an Express.js server that listens on port 3000,
 handles JSON requests, and includes error handling middleware.
@@ -22,11 +24,13 @@ handles JSON requests, and includes error handling middleware.
 ### 2. Define the Feature Clearly
 
 **Basic prompt:**
+
 ```
 Create an API
 ```
 
 **Improved prompt:**
+
 ```
 Create a REST API endpoint GET /users that returns a JSON list
 of users from a MongoDB collection using Mongoose.
@@ -36,6 +40,7 @@ Include proper error handling and response status codes.
 ### 3. Include Data Source Details
 
 **Improved prompt:**
+
 ```
 Generate a Node.js service using Sequelize ORM connected to
 a PostgreSQL database. Implement methods to create, read,
@@ -45,6 +50,7 @@ update, and delete products with validation.
 ### 4. Mention Middleware and Tools
 
 **Improved prompt:**
+
 ```
 Add authentication middleware using Passport.js JWT strategy
 to protect route POST /orders. Include token validation and
@@ -54,6 +60,7 @@ error responses for unauthorized access.
 ### 5. Provide File Structure Expectations
 
 **Improved prompt:**
+
 ```
 Structure the project with:
 - server.js (entry point)
@@ -113,6 +120,47 @@ Create Jest tests for the user controller:
 - Test error cases for invalid database responses
 ```
 
+**Basic prompt:**
+
+```
+Write tests for user service
+```
+
+**Improved prompt:**
+
+```
+Write Mocha + Chai test cases for a Node.js `userService.js` file that:
+- Includes methods: `createUser`, `getUserById`, `updateUser`, and `deleteUser`
+- Uses a `userModel` that interacts with MongoDB via Mongoose
+- Mocks database operations using `sinon` or `proxyquire`
+- Tests both successful responses and thrown errors
+- Ensures proper validation logic is followed for each method
+```
+
+**Basic prompt:**
+
+```
+Add edge case tests
+```
+
+**Improved prompt:**
+
+```
+Write test cases for `userService` covering edge cases:
+- Creating a user with an already registered email (should throw a duplicate key error)
+- Getting a user with an invalid or non-existent ID (should return null or throw)
+- Updating a user with missing required fields (should trigger validation error)
+- Deleting a user that doesn't exist (should handle gracefully without crashing)
+```
+
+**Provide reference testcase:**
+
+- Start by writing **one complete and well-structured test case** for a specific method.
+- Include setup logic, mocking of dependencies, success and failure cases, and clear assertions.
+- Use that test case as a **reference standard** for the structure and conventions.
+- When prompting AI, **explicitly ask it to follow the structure** of the initial test case.
+- This promotes consistency and ensures clean, maintainable test coverage.
+
 ## Prompt Refinement Tips
 
 - **Break down complex tasks**: Ask for one piece at a time.
@@ -123,12 +171,14 @@ Create Jest tests for the user controller:
 ## Do’s and Don’ts
 
 ### ✅ Do:
+
 - Mention the exact library, version, and patterns.
 - Specify routes, methods, and expected inputs/outputs.
 - Ask for error handling and edge cases.
 - Provide project structure in prompts.
 
 ### ❌ Don’t:
+
 - Use vague terms like “make an API” without details.
 - Combine too many unrelated tasks in one prompt.
 - Omit database or framework details.

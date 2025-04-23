@@ -9,11 +9,13 @@ Prompt engineering can supercharge your Nest.js development workflow when using 
 ### 1. Be Specific About the Module or Feature
 
 **Basic prompt:**
+
 ```
 Create a user module
 ```
 
 **Improved prompt:**
+
 ```
 Generate a Nest.js module named `UserModule` with:
 - A `UserController` that handles GET, POST, PUT, and DELETE requests
@@ -26,6 +28,7 @@ Generate a Nest.js module named `UserModule` with:
 ### 2. Include Validation and Error Handling Requirements
 
 **Improved prompt:**
+
 ```
 Generate a Nest.js controller for `AuthController` that:
 - Includes login and register routes
@@ -37,6 +40,7 @@ Generate a Nest.js controller for `AuthController` that:
 ### 3. Specify the Database & ORM
 
 **Improved prompt:**
+
 ```
 Create a Nest.js service using Prisma ORM to manage products.
 - Include methods to get all products, get by ID, create, update, and delete.
@@ -47,6 +51,7 @@ Create a Nest.js service using Prisma ORM to manage products.
 ### 4. Mention Middleware or Interceptors
 
 **Improved prompt:**
+
 ```
 Generate a Nest.js interceptor that logs the time taken to handle each request.
 - Apply it globally using `APP_INTERCEPTOR`
@@ -56,6 +61,7 @@ Generate a Nest.js interceptor that logs the time taken to handle each request.
 ### 5. Mention Module Structure & File Organization
 
 **Improved prompt:**
+
 ```
 Generate a feature module for handling blog posts.
 Place files in:
@@ -110,6 +116,49 @@ Generate a Nest.js HTTP exception filter that:
 - Applies to all routes globally
 ```
 
+### Define the Testing Framework and Scope
+
+**Basic prompt:**
+
+```
+Write tests for user service
+```
+
+**Improved prompt:**
+
+```
+Write Jest test cases for a Nest.js `UserService` that:
+- Includes methods: `createUser`, `getUserById`, `updateUser`, and `deleteUser`
+- Mocks the `UserRepository` using `@nestjs/testing`
+- Validates input using DTOs and class-validator
+- Throws appropriate exceptions like `NotFoundException` and `ConflictException`
+- Covers both success and failure scenarios
+```
+
+**Basic prompt:**
+
+```
+Add edge case tests
+```
+
+**Improved prompt:**
+
+```
+Add edge case test scenarios for `UserService` including:
+- Creating a user that already exists (should throw `ConflictException`)
+- Fetching a user with a non-existent ID (should throw `NotFoundException`)
+- Updating a user with invalid data (should fail validation)
+- Deleting a user that doesn't exist
+```
+
+**Provide reference testcase:**
+
+- Start by writing **one complete and well-structured test case** for a specific method.
+- Include setup logic, mocking of dependencies, success and failure cases, and clear assertions.
+- Use that test case as a **reference standard** for the structure and conventions.
+- When prompting AI, **explicitly ask it to follow the structure** of the initial test case.
+- This promotes consistency and ensures clean, maintainable test coverage.
+
 ## Prompt Refinement Best Practices
 
 - **Ask for type safety**: “Add TypeScript types to DTOs and method signatures”
@@ -120,12 +169,18 @@ Generate a Nest.js HTTP exception filter that:
 ## Do's and Don’ts
 
 ### ✅ Do:
+
 - Specify controller routes and decorators
 - Mention the exact ORM and its usage style
 - Include expected return shapes
 - Request DTOs with validation decorators
 
 ### ❌ Don’t:
+
 - Ask for vague service generation without context
 - Mix unrelated concerns (auth + CRUD + caching)
 - Forget about exception handling and logging
+
+```
+
+```
