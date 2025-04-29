@@ -1,0 +1,49 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: |
+  Enforce detailed documentation for Flutter classes, constructors, functions, and variables with use cases and logic details.
+  This applies to all Dart files in the Flutter project, ensuring adherence to documentation standards, 
+  and automatically fixing any missed lints based on `very_good_analysis` rules.
+globs:
+  - "lib/**/*.dart"
+  - "test/**/*.dart"
+---
+
+# 📚 Flutter Documentation Standards with Use Cases and Logic Details
+
+## 🏛 Class Documentation
+
+- **Rule**: Every class must have a **detailed doc comment**.
+- **How**:
+  - Describe the class's role, purpose, and primary use case.
+  - For **widgets**, explain the UI/UX role, properties (props), and expected behavior.
+  - Include any relevant **logic** or **state management** used within the class.
+  - For **test classes**, explain the scenario under test, edge cases, and the expected result.
+  - **Ensure adherence to all lint rules** from `very_good_analysis`.
+    - Follow the naming conventions (`UpperCamelCase` for classes).
+    - Use appropriate visibility modifiers (`private`, `public`, etc.) for class members.
+    - Prefer using `const` constructors where applicable.
+    - Ensure no unused imports or variables exist.
+
+### Example:
+
+```dart
+/// A widget that displays a custom login form with validation.
+///
+/// This form includes fields for email and password. The user must enter valid values 
+/// for both fields to proceed with the login action. It uses [TextEditingController] 
+/// for managing the text input and [FormState] to handle validation logic.
+///
+/// Use case: This widget is part of the authentication flow in the app, which is 
+/// required to log in to access restricted features.
+///
+/// Logic Details:
+/// - The [login] method will call the backend API with email and password after 
+///   validation. If successful, it will navigate the user to the home screen.
+class LoginForm extends StatelessWidget {
+  // ...
+}

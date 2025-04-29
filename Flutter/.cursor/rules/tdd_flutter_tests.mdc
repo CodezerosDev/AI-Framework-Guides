@@ -1,0 +1,37 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Enforce Test-Driven Development (TDD) for Unit Tests, Widget Tests, and Integration Tests in Flutter.
+globs:
+  - "lib/**/*.dart"
+  - "test/**/*.dart"
+---
+
+# 🧪 TDD Standards for Flutter (Unit, Widget, and Integration Tests)
+
+## 🧑‍🔬 Unit Test Standards
+
+- **Rule**: Unit tests must test individual pieces of logic in isolation.
+- **How**:
+  - Write unit tests for classes and functions to verify the core logic without involving UI or external dependencies (e.g., API calls).
+  - Ensure unit tests are **fast** and **independent** from external systems like databases or network calls.
+- **Example**:
+
+  ```dart
+  // test/auth_manager_test.dart
+
+  /// Tests for the AuthManager class to verify the login logic.
+  ///
+  /// Use case: Ensure that the login method behaves as expected with valid and invalid credentials.
+  test('Login should succeed with valid credentials', () {
+    final authManager = AuthManager();
+    expect(authManager.login('valid@example.com', 'password'), isTrue);
+  });
+
+  test('Login should fail with invalid credentials', () {
+    final authManager = AuthManager();
+    expect(authManager.login('invalid@example.com', 'wrongpassword'), isFalse);
+  });

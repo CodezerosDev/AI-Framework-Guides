@@ -1,0 +1,64 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: |
+  This rule applies to all Dart files in the Flutter project using Cubit for state management,
+  GoRouter for navigation, Dio for networking, MVVM architecture, and feature-first folder structure.
+  It enforces architectural patterns, folder organization, TDD, SOLID principles, and documentation standards.
+globs:
+  - "lib/**/*.dart"
+  - "test/**/*.dart"
+alwaysApply: true
+---
+
+# 📁 Flutter Project Architecture & Folder Structure
+
+- Use **MVVM architecture** with **Cubit** for state management (no Bloc).
+- Follow a **feature-first** folder structure under `lib/features/`.
+  - Each feature contains:
+    - `data`: datasources, models, repositories
+    - `domain`: entities, repository interfaces, usecases
+    - `presentation`: cubit, viewmodels, pages, widgets
+- Shared code lives under `lib/core/` (e.g., `config/router`, `di`, `network`, `utils`, `theme`, `widgets`).
+- Follow naming conventions:
+  - `lower_snake_case` for files and folders
+  - `UpperCamelCase` for classes
+- Keep files small and modular:
+  - Split widgets into files if over ~40 lines
+  - Split logic from UI
+  - Always follow DRY (Do not Repeat Yourself)
+  - DO use strings in part of directives
+  - DON'T allow an import path to reach into or out of lib
+
+---
+
+# 🚫 Disallowed
+
+- ❌ Use of `Bloc`, `BlocBuilder`, or `BlocProvider`
+- ❌ Mixing business logic and UI
+- ❌ Fat viewmodels or widgets with multiple responsibilities
+
+---
+
+# ✅ Enforce Usage of Cubit
+
+- ✅ All state management must be implemented using `Cubit`
+- ✅ Prefer `emit` for state changes
+- ✅ Keep Cubits small and testable
+- ✅ Use `Equatable` for state classes
+
+```dart
+class AuthCubit extends Cubit<AuthState> {
+  AuthCubit(this._authRepo) : super(AuthInitial());
+
+  final AuthRepository _authRepo;
+
+  Future<void> login(String email, String password) async {
+    emit(AuthLoading());
+    final result = await _authRepo.login(email, password);
+    emit(result ? AuthSuccess() : AuthFailure());
+  }
+}
