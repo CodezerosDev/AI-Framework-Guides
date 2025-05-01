@@ -2,13 +2,12 @@
 
 ## Introduction to Team AI Collaboration for React Native
 
-Ensuring consistent, high-quality output when multiple team members use AI tools like Cursor requires deliberate coordination. This guide presents strategies for standardizing AI usage across your React Native development team to maintain code consistency, quality, and project velocity.
-
-## Setting Up Team AI Standards
+To ensure consistency, quality, and development velocity in React Native projects, teams using AI tools like Cursor must align around standardized practices. This document proposes a structured framework for integrating AI collaboration into team workflows, promoting reusable knowledge, scalable development, and reliable outcomes.
+## Foundation: Standardizing AI Use Across the Team
 
 ### 1. Create a Team AI Prompt Library
 
-Establish a shared repository of effective prompts for common React Native development tasks:
+Establish a shared, organized prompt library to avoid duplication and accelerate development:
 
 ```
 └── ai-prompts/
@@ -41,7 +40,7 @@ Create standardized prompts that align with your team's architectural decisions:
 # State Management Implementation Prompt
 
 ## Redux Pattern
-```
+
 Create a [feature name] using Redux with:
 - Action types defined as constants
 - Action creators for [list required actions]
@@ -49,19 +48,15 @@ Create a [feature name] using Redux with:
 - Selectors for accessing state
 - UI components connected via useSelector/useDispatch
 Follow our team pattern with separate actions, reducers, and selectors files.
-```
 
 ## Context API Pattern
-```
+
 Implement [feature name] using React Context API with:
 - A dedicated context provider component
 - Custom hook for accessing context
 - State management with useReducer
-- Actions for [list required actions]
-Structure according to our feature-first architecture.
+- Actions for [list required actions] Structure according to our feature-first architecture.
 ```
-```
-
 ### 3. Establish AI Output Standards Document
 
 Create a comprehensive document that defines quality standards for AI-generated code:
@@ -70,24 +65,55 @@ Create a comprehensive document that defines quality standards for AI-generated 
 # AI Output Quality Standards for React Native
 
 ## Component Standards
-- Use functional components with hooks
-- All list components must implement proper optimization (memo, key extractor)
-- Components must include proper TypeScript interfaces
+- Use functional components with React Hooks (no class components).
+- Components must be strongly typed using TypeScript interfaces or types.
 - UI components should follow our design system naming conventions
 - Complex components must be broken down into smaller components
+- Implement memoization (React.memo, useMemo, useCallback) for performance-sensitive components.
+- Use getItemLayout where applicable.
+- Use named stylesheets, avoid inline styles.
+- Adhere to design system components and naming conventions (e.g., PrimaryButton, FormInput).
+- Avoid deep prop drilling—use context or hooks instead.
+- Ensure proper loading, empty, and error states.
+- Include accessibility features:
+- Use accessibilityLabel, accessible, and proper roles.
+- Ensure compatibility with screen readers and voiceover.
 
 ## State Management Standards
-- Redux selectors must use reselect for memoization
-- Context implementations must provide custom hooks
-- State updates must enforce immutability
-- Action creators must follow our naming pattern
-- Side effects must be isolated in middleware/effects
+# Redux:
+- Use reselect for all selectors.
+- Reducers must be pure and immutable.
+- Action creators must follow {entity}/{action} naming convention.
+- Use createSlice if using Redux Toolkit.
+
+# Context API:
+- Provide a typed context value and custom hook (e.g., useAuth).
+- Separate state and dispatch into different contexts if needed.
+
+# MobX/Zustand:
+Follow store segregation by domain.
+
+- Avoid over-reliance on single global stores.
+- Side effects (API calls, logging, async ops) must be:
+- Isolated in middleware (redux-saga, redux-thunk, useEffect, or custom async hooks).
+- Explicit and well-documented.
+
+All stores or contexts must be tested in isolation.
 
 ## Testing Requirements
-- AI-generated components must include test files
-- All user interactions must have test coverage
+- Every AI-generated file must include a corresponding *.test.tsx or *.spec.ts test.
+- Ensure coverage of key interactions (e.g., button clicks, input typing).
 - Mock data should follow our fixture patterns
-...
+- Use React Testing Library or Detox (for E2E) with realistic user flows.
+
+# Include:
+- Tests for loading, success, and error states.
+- Boundary and edge case handling (e.g., null, empty values).
+
+# Mocks and fixtures should:
+- Follow existing __mocks__ or fixtures/ directory structures.
+- Be reusable across test files.
+
 ```
 
 ## Team Workflow Integration
@@ -103,18 +129,26 @@ Implement a React Native-specific checklist for reviewing AI-generated code:
 - [ ] Component structure follows team standards
 - [ ] State management implementation matches project pattern
 - [ ] File organization aligns with project architecture
+- [ ] Code avoids deeply nested structures; logic is broken into helper functions or hooks
+- [ ] Props are well-typed and validated using TypeScript interfaces or PropTypes (if applicable)
 
 ## React Native Best Practices
 - [ ] No inline styles
 - [ ] FlatList components use optimized rendering
 - [ ] Proper keyboard handling for form inputs
 - [ ] Platform-specific code is properly isolated
+- [ ] Safe area insets are handled using react-native-safe-area-context
+- [ ] Navigation logic uses correct pattern (e.g., stack, tab, modal navigation)
+- [ ] Avoids usage of deprecated or unstable APIs
 
 ## Team Conventions
 - [ ] Naming follows team conventions
 - [ ] Comments and documentation match team style
 - [ ] Proper handling of internationalization
 - [ ] Error handling follows team patterns
+- [ ] All string literals and error messages are externalized or localized
+- [ ] Feature flags or environment-specific logic are handled using team-approved methods
+
 ```
 
 ### 2. AI Integration Workflow
@@ -178,10 +212,11 @@ const LoginForm = () => {
 ### 2. AI Collaboration Channels
 
 Create dedicated communication channels for sharing AI insights:
-
+```
 - **#ai-prompt-sharing**: Channel for sharing effective prompts
 - **#ai-troubleshooting**: Help with problematic AI responses
 - **#ai-techniques**: General discussion about improving AI workflows
+```
 
 ### 3. AI Review Comments
 
@@ -384,8 +419,7 @@ Generate a React Native screen for [feature name] that:
    - Android: [specific behavior]
 
 Ensure the code is properly typed with TypeScript and follows our file structure conventions.
-```
-```
+
 
 ### 3. AI Governance Committee
 
@@ -409,16 +443,25 @@ Track metrics to gauge AI effectiveness for React Native development:
 - Time saved per component implementation
 - Reduction in boilerplate code
 - Sprint velocity improvement
+- Time to first usable draft of a feature
+- Developer feedback cycle time (time from AI output to approval)
+- Parallel development throughput (AI-generated stubs enabling concurrent tasks)
 
 ## Quality Metrics
 - ESLint/TypeScript issues in AI vs. manually written code
 - Bug rate in AI-generated components
 - Technical debt introduced
+- Test coverage of AI-generated code (compared to manual code)
+- Post-merge fixes required due to missed edge cases or regressions
+- Clarity of logic and separation of concerns in AI-authored modules
 
 ## Consistency Metrics
 - Adherence to team patterns
 - Component style consistency
 - Documentation completeness
+- Reusability of AI-generated components (measured by reuse across modules)
+- Adherence to accessibility standards (a11y)
+- Consistency in error handling and edge case treatment
 ```
 
 ### 2. Regular AI Retrospectives
@@ -484,6 +527,12 @@ Schedule dedicated AI retrospectives to improve team collaboration:
 - Create design token integration prompts for consistent styling
 - Document design system component specifications for AI reference
 - Build a design review process for AI-generated components
+- Define prompt templates for translating Figma elements into code
+- Establish rules for spacing, layout, and responsiveness interpretation
+- Ensure accessibility guidelines are embedded in AI styling prompts
+- Set up a feedback loop between design tools and AI-generated previews
+- Maintain a centralized mapping of design patterns to code abstractions
+- Use automated visual diffing tools to compare design vs. AI output
 ```
 
 ### 2. Working with Backend Teams
@@ -495,6 +544,13 @@ Schedule dedicated AI retrospectives to improve team collaboration:
 - Establish data transformation patterns for API responses
 - Document error handling conventions for network requests
 - Build shared type definitions for API contracts
+- Define conventions for loading, success, and error UI states
+- Standardize GraphQL/REST query/mutation naming in prompts
+- Implement retry and timeout strategies in AI-generated network logic
+- Ensure AI-generated code respects backend rate limits and pagination
+- Establish logging and monitoring practices for API interactions
+- Align validation logic between frontend and backend schemas (e.g., Zod/Yup with backend DTOs)
+
 ```
 
 ## Conclusion

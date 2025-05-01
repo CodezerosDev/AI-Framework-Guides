@@ -4,47 +4,6 @@
 
 Cursor AI can significantly enhance your React Native development workflow when configured properly. This guide outlines specific configurations, rules, and best practices to optimize Cursor for React Native projects.
 
-## Initial Configuration
-
-### Environment Setup
-
-1. **Configure React Native Project Paths**
-   
-   Ensure Cursor AI is aware of your React Native project structure:
-   
-   ```
-   Settings > AI > Project Context > Add custom paths > [path to your React Native project]
-   ```
-   
-   Recommended paths to include:
-   - src/ (or your main code directory)
-   - package.json
-   - tsconfig.json (if using TypeScript)
-   - metro.config.js
-   - babel.config.js
-
-2. **Set JavaScript/TypeScript Analysis Integration**
-
-   For better code intelligence:
-   
-   ```
-   Settings > Editor > Language Features > JavaScript/TypeScript > Enable TypeScript Server integration
-   ```
-
-3. **Include Relevant Package Documentation**
-
-   Add popular React Native packages to your project context:
-   
-   ```
-   Settings > AI > Project Context > Add reference URLs
-   ```
-   
-   Recommended URLs:
-   - https://reactnative.dev/docs
-   - https://reactnavigation.org/docs
-   - https://redux.js.org/
-   - https://styled-components.com/docs
-
 ## Cursor Command Rules for React Native
 
 Create custom commands in Cursor to streamline React Native development:
@@ -62,6 +21,11 @@ Create custom commands in Cursor to streamline React Native development:
    - StyleSheet for component styles
    - Memoization for performance optimization
    - Basic component documentation
+
+   - Proper file structure and formatting
+   - Forward ref support
+   - Default props
+   - Accessibility props  
    ```
 
 2. **Create Screen Component**
@@ -71,11 +35,17 @@ Create custom commands in Cursor to streamline React Native development:
    Rule configuration:
    ```
    Generate a React Native screen component named {{screen_name}} including:
-   - Navigation props typing
-   - Safe area handling
+   - Navigation props typing using NativeStackScreenProps
+   - Safe area handling using SafeAreaView
    - Basic layout structure with styles
    - Loading and error states
    - Screen-level documentation
+
+   - Accessibility props where applicable
+   - testID prop for testing
+   - i18n support placeholder using t()
+   - Route param typing using RootStackParamList
+   - Default prop values where applicable
    ```
 
 3. **Generate Custom Hook**
@@ -89,6 +59,11 @@ Create custom commands in Cursor to streamline React Native development:
    - Performance optimization with useMemo/useCallback
    - Return value interface
    - Hook documentation with usage example
+
+   - Platform-specific logic if needed
+   - Named export and consistent file naming (useXyz.ts)
+   - Easy to test and mock in unit tests
+   - A usage example comment showing how to use the hook
    ```
 
 4. **React Native Test Template**
@@ -102,6 +77,14 @@ Create custom commands in Cursor to streamline React Native development:
    - Mock implementations for native modules
    - Common test cases and assertions
    - Snapshot testing configuration
+
+   - renderHook support if the subject is a custom hook
+   - Uses screen and within from Testing Library
+   - File should be named {{test_subject}}.test.tsx
+   - Comment blocks explaining each test case
+   - Clean test isolation using beforeEach and jest.clearAllMocks
+   - Follows Testing Library and Jest best practices
+   - Readable and maintainable structure
    ```
 
 ## Cursor Chat Context Rules
@@ -119,16 +102,34 @@ Settings > AI > Project Context > Directory Structure > Enable
 Set specific file inclusion patterns:
 ```
 Include: 
-- src/**/*.{js,jsx,ts,tsx}
-- components/**/*.{js,jsx,ts,tsx}
-- screens/**/*.{js,jsx,ts,tsx}
-- App.{js,jsx,ts,tsx}
-- package.json
-- metro.config.js
-- babel.config.js
-- tsconfig.json
-- ios/Podfile
-- android/build.gradle
+
+Root/
+├── android/                # Android native project and build configs
+│   └── build.gradle        # Android build script
+├── ios/                    # iOS native project files
+│   └── Podfile             # CocoaPods dependencies for iOS
+├── node_modules/           # Installed npm packages
+├── src/                    # source folder of project
+│   ├── algorithms/         # Custom logic or complex operations (e.g., data processing, calculations)
+│   ├── components/         # Reusable UI components (buttons, cards, etc.)
+│   ├── customHooks/        # Reusable React hooks (e.g., useFetch, useDebounce)
+│   ├── hooks/              # Possibly general or third-party-related hooks
+│   ├── nativeBridge/       # Native module bridges (e.g., bridging Swift/Kotlin to JS)
+│   ├── navigators/         # React Navigation configurations (stacks, tabs, etc.)
+│   ├── screens/            # App screens/views mapped to navigation routes
+│   ├── services/           # Business logic, API calls, external integrations
+│   ├── store/              # Global state management (e.g., Redux, Zustand)
+│   ├── theme/              # Style variables (colors, typography, spacing)
+│   ├── translations/       # i18n localization files (JSON or TS format)
+│   └── utils/              # Utility functions/helpers used across the app
+├── package.json            # Project metadata and dependencies
+├── tsconfig.json           # TypeScript configuration
+├── babel.config.js         # Babel compiler settings
+├── metro.config.js         # Metro bundler config for React Native
+├── .env                    # Environment variables
+├── App.tsx                 # Entry point of the app (inside `src`)
+└── App.test.tsx            # Test for the main App component
+
 ```
 
 ### Code Generation Context Limits
