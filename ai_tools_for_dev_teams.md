@@ -33,6 +33,5 @@
 
 | Tool | Description | Key Features | Pricing | Integration Capabilities |
 |------|-------------|--------------|---------|--------------------------|
-| **Directus** | Headless CMS with AI | - Content modeling<br>- API generation<br>- AI-driven insights | Free tier + $25/month Standard | REST/GraphQL APIs, databases |
 | **Payload CMS** | Headless CMS for developers | - Content modeling<br>- TypeScript integration<br>- AI content tools | Free self-hosted + $99/month Cloud | APIs, databases, authentication |
 
