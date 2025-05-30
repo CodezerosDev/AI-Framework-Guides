@@ -24,6 +24,7 @@ Remember **SPARK** when crafting your prompts:
 **R - Request Format**: Specify how you want the output structured
 **K - Key Constraints**: Include tone, length, audience, or other requirements
 
+
 ### Example Using SPARK:
 **Instead of**: "Write an email about our software"
 
@@ -211,9 +212,8 @@ Present in a professional comparison table format suitable for client presentati
 ```
 
 **Sample Output:**
-```
-## CRM Solution Comparison: DataFlow Pro vs. Salesforce
 
+## CRM Solution Comparison: DataFlow Pro vs. Salesforce
 | Factor | DataFlow Pro | Salesforce |
 |--------|--------------|------------|
 | **Core Capabilities** | Manufacturing-specific CRM with integrated inventory management, production planning, and supply chain visibility | General-purpose CRM with extensive customization options and broad feature set |
@@ -222,7 +222,6 @@ Present in a professional comparison table format suitable for client presentati
 | **Typical Customers** | Mid-market manufacturers (50-500 employees) in automotive, aerospace, and industrial equipment | Enterprise customers across all sectors, requires significant customization for manufacturing |
 | **Implementation** | 8-12 weeks with pre-built manufacturing workflows and minimal customization needed | 16-24 weeks requiring extensive configuration, custom development, and third-party integrations |
 | **Key Advantage** | Purpose-built for manufacturing with faster time-to-value | Comprehensive ecosystem with extensive third-party integrations |
-```
 
 ### 5. Follow-up Email Sequences
 
