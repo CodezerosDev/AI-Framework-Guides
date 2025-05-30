@@ -19,9 +19,13 @@ A prompt is the instruction or question you give to an AI tool. Think of it as g
 Remember **SPARK** when crafting your prompts:
 
 **S - Set the Role**: Define who the AI should act as
+
 **P - Purpose**: Clearly state your objective  
+
 **A - Add Context**: Provide relevant background information
+
 **R - Request Format**: Specify how you want the output structured
+
 **K - Key Constraints**: Include tone, length, audience, or other requirements
 
 
