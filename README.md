@@ -1,4 +1,4 @@
-# CursorAI-Framework-Guides
+# AI-Guides
 
 This repository contains practical guidance for developers integrating AI tools like Cursor into their workflow across various technologies. Each guide includes:
 
