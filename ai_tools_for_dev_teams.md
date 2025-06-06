@@ -35,3 +35,5 @@
 |------|-------------|--------------|---------|--------------------------|
 | **Payload CMS** | Headless CMS for developers | - Content modeling<br>- TypeScript integration<br>- AI content tools | Free self-hosted + $99/month Cloud | APIs, databases, authentication |
 
+
+
